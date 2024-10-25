@@ -31,7 +31,7 @@ void solution(int N, int L)
         
         while (!deq.empty() && deq.back().second > A_i)
             deq.pop_back();
-        deq.push_back(make_pair(i, A_i));
+        deq.push_back({i, A_i});
         if (deq.front().first + L <= i)
             deq.pop_front();
         
