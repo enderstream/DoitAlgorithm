@@ -7,4 +7,7 @@ public class Main {
         BufferedReader BF = new BufferedReader(new InputStreamReader(System.in));
         String s = BF.readLine();
     }
+    public static void solution(){
+
+    }
 }
