@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <unordered_map>
+#include <unordered_set>
 #include <stack>
 
 using namespace std;
@@ -15,7 +16,7 @@ int main(int argc, char const *argv[])
     ios::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    freopen("./input.txt", "r", stdin);
+    freopen("input.txt", "r", stdin);
 
     int N, M;
     cin >> N >> M;
@@ -49,26 +50,35 @@ bool find_friend_chain(dict &friends, int N, int i)
     vector<bool> visited(N, false);
     stack<pair<int, int>> stack;
     stack.push(pair<int, int>(i, 1));
+    // visited[i] = true;
     while (!stack.empty())
     {
         pair<int, int> top = stack.top();
         stack.pop();
         int person = top.first;
         int depth = top.second;
+        visited[person] = true;
 
         if (depth == N)
             return true;
-            
+
         if (friends[person].size() == 0)
+        {
+            visited[person] = false;
             continue;
-        
+        }
+        bool flag = true;
         for (auto f : friends[person])
         {
             if (!visited[f])
             {
-                visited[f] = true;
+                flag = false;
                 stack.push(pair<int, int>(f, depth + 1));
             }
+        }
+        if (flag)
+        {
+            visited[person] = false;
         }
     }
     return false;
