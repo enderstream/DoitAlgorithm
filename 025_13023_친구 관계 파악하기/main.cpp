@@ -48,37 +48,41 @@ int solution(int N, dict &friends)
 bool find_friend_chain(dict &friends, int N, int i)
 {
     vector<bool> visited(N, false);
-    stack<pair<int, int>> stack;
-    stack.push(pair<int, int>(i, 1));
-    // visited[i] = true;
+    stack<int> branch_stack;
+
+    stack<vector<int>> stack;
+    stack.push({-1, i, 1});
+
     while (!stack.empty())
     {
-        pair<int, int> top = stack.top();
+        vector<int> top = stack.top();
         stack.pop();
-        int person = top.first;
-        int depth = top.second;
-        visited[person] = true;
+        int person = top[1];
+        int depth = top[2];
 
-        if (depth == N)
+        if (!branch_stack.empty() && branch_stack.top() != top[0])
+        {
+            visited[branch_stack.top()] = false;
+            branch_stack.pop();
+        }
+
+        if (depth == 5)
             return true;
 
         if (friends[person].size() == 0)
-        {
-            visited[person] = false;
             continue;
-        }
-        bool flag = true;
+
+        bool has_branch = false;
         for (auto f : friends[person])
-        {
             if (!visited[f])
             {
-                flag = false;
-                stack.push(pair<int, int>(f, depth + 1));
+                has_branch = true;
+                stack.push({person, f, depth + 1});
             }
-        }
-        if (flag)
+        if (has_branch)
         {
-            visited[person] = false;
+            visited[person] = true;
+            branch_stack.push(person);
         }
     }
     return false;
