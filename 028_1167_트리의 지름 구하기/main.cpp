@@ -36,6 +36,9 @@ int main(int argc, char const *argv[])
     cin >> V;
     pair_dict tree;
     for (int i = 1; i <= V; i++)
+        tree[i];
+    
+    for (int i = 1; i <= V; i++)
     {
         int v;
         cin >> v;
@@ -46,7 +49,8 @@ int main(int argc, char const *argv[])
             if (u == -1)
                 break;
             cin >> d;
-            tree[i].push_back(pair<int, int>(u, d));
+            tree[v].push_back(pair<int, int>(u, d));
+            tree[u].push_back(pair<int, int>(v, d));
         }
     }
 
