@@ -6,6 +6,7 @@
         "stack": "cpp",
         "xiosbase": "cpp",
         "algorithm": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "iostream": "cpp"
     }
 }
