@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include <vector>
 #include <queue>
 
@@ -20,7 +21,8 @@ int main(int argc, char const *argv[])
     for (int i = 0; i < N; i++)
     {
         string str;
-        cin >> str;
+        getline(cin, str); //공백없는 한줄 입력, #include <string>
+        // cin >> str 해도 됨, 근데 윈도우에서는 이거 오류표시선떠서 거슬림(실제 컴파일은 문제 X)
         for (int j = 0; j < M; j++)
             matrix[i][j] = str[j] - '0';
     }
