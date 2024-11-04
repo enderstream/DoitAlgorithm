@@ -54,13 +54,12 @@ int main(int argc, char const *argv[])
 void solution(bool zero, int P, int N, vector<int> &pos, vector<int> &neg)
 {
     int sum = 0;
-
     // 양수 먼저 계산
     // 1부터 처리
     for (int i = P-1; i >= 0; i--)
         if(pos[i] == 1)
             sum++;
-            
+
     // 전체 양수 개수 중 1개수 제외
     P-= sum;
     for (int i = 0; i <= P - 2; i += 2)

@@ -58,5 +58,6 @@ void solution(int N, min_heap &card_deck)
 
         card_deck.push(deck1 + deck2);
     }
+    
     cout << total_compare;
 }

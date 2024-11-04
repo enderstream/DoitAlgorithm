@@ -50,5 +50,6 @@ void solution(int N, int K, vector<int> &coins)
         if(!K)
             break;
     }
+    
     cout <<  total_coins;
 }
