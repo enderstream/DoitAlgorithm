@@ -23,7 +23,10 @@ int main(int argc, char const *argv[])
 {
     FAST_IO;
     if constexpr (local)
+    {
         (void)!freopen("./input.txt", "r", stdin);
+        debug << "\n";
+    }
 
     // io here
     // debug << "Hello World!" << endl;
