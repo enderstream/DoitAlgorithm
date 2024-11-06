@@ -21,7 +21,7 @@ using namespace std;
 
 typedef unsigned long long i64;
 
-vector<i64> sieve_of_eratosthenes(i64 B);
+vector<int> sieve_of_eratosthenes(int B);
 void solution(i64 A, i64 B);
 int log_p_N(i64 prime, i64 N);
 
@@ -44,27 +44,26 @@ int main(int argc, char const *argv[])
 void solution(i64 A, i64 B)
 {
     int almost_prime = 0;
-    vector<i64> primes = sieve_of_eratosthenes(B);
+    vector<int> primes = sieve_of_eratosthenes(1 + int(sqrt(B)));
     for (i64 prime : primes)
         almost_prime += (log_p_N(prime, B) - log_p_N(prime, A - 1));
 
     cout << almost_prime;
 }
 
-vector<i64> sieve_of_eratosthenes(i64 B)
+vector<int> sieve_of_eratosthenes(int B)
 {
-    vector<i64> primes;
-    B = 1 + i64(sqrt(B));
+    vector<int> primes;
     vector<bool> is_prime(B, true);
     is_prime[0] = false;
     is_prime[1] = false;
 
-    for (i64 p = 2; p * p <= B; p++)
+    for (int p = 2; p * p <= B; p++)
         if (is_prime[p])
-            for (i64 i = p * p; i <= B; i += p)
+            for (int i = p * p; i <= B; i += p)
                 is_prime[i] = false;
 
-    for (i64 i = 2; i <= B; i++)
+    for (int i = 2; i <= B; i++)
         if (is_prime[i])
             primes.push_back(i);
 

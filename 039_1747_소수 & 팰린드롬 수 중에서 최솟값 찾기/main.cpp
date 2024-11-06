@@ -20,7 +20,7 @@ constexpr bool local = true;
 using namespace std;
 
 int solution(int N);
-vector<int> sieve_of_eratosthenes(int N);
+bool is_prime(int number);
 bool is_palindrome(int prime);
 
 int main(int argc, char const *argv[])
@@ -41,30 +41,25 @@ int main(int argc, char const *argv[])
 
 int solution(int N)
 {
-    vector<int> primes = sieve_of_eratosthenes(N);
-    for (int prime : primes)
-        if (is_palindrome(prime))
-            return prime;
+    if (N <= 2)
+        return 2;
+    while (true)
+    {
+        if (is_prime(N) && is_palindrome(N))
+            return N;
+        N++;
+    }
 }
 
-vector<int> sieve_of_eratosthenes(int N)
+bool is_prime(int number)
 {
-    vector<int> primes = {2};
-    N++;
-    vector<bool> is_prime(N, true);
-    is_prime[0] = false;
-    is_prime[1] = false;
+    if (number % 2 == 0)
+        return false;
+    for (int i = 3; i * i <= number; i += 2)
+        if (number % i == 0)
+            return false;
 
-    for (int p = 2; p * p <= N; p++)
-        if (is_prime[p])
-            for (int i = p * p; i <= N; i += p)
-                is_prime[i] = false;
-
-    for (int i = 3; i <= N; i += 2)
-        if (is_prime[i])
-            primes.push_back(i);
-
-    return primes;
+    return true;
 }
 
 bool is_palindrome(int prime)
@@ -72,8 +67,8 @@ bool is_palindrome(int prime)
     string str_prime = to_string(prime);
     int i = 0;
     int j = str_prime.length() - 1;
-    while(i <= j)
-        if(str_prime[i++] != str_prime[j--])
+    while (i <= j)
+        if (str_prime[i++] != str_prime[j--])
             return false;
 
     return true;
