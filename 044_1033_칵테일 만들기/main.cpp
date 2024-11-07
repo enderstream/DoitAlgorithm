@@ -21,30 +21,29 @@ constexpr bool local = true;
 
 using namespace std;
 
-// vector_map
-typedef unordered_map<int, vector<int>> vector_map;
-typedef vector<vector<pair<int, int>>> pair_matrix;
+typedef unordered_map<long, vector<long>> vector_map;
+typedef vector<vector<pair<long, long>>> pair_matrix;
 
-void reduction(int &p, int &q);
-int get_GCD(int p, int q);
-void solution(int N, pair_matrix &ratios, vector_map &ingredients);
-void calculate_ratio_BFS(int N, vector<pair<int, int>> &mass, pair_matrix &ratios, vector_map &ingredients);
-int get_LCM(int p, int q);
+void reduction(long &p, long &q);
+long get_GCD(long p, long q);
+void solution(long N, pair_matrix &ratios, vector_map &ingredients);
+void calculate_ratio_BFS(long N, vector<pair<long, long>> &mass, pair_matrix &ratios, vector_map &ingredients);
+long get_LCM(long p, long q);
 
-int main(int argc, char const *argv[])
+int main(long argc, char const *argv[])
 {
     FAST_IO;
     debug << "\n";
     if constexpr (local)
         (void)!freopen("./input.txt", "r", stdin);
 
-    int N;
+    long N;
     cin >> N;
     vector_map ingredients;
-    pair_matrix ratios(N, vector<pair<int, int>>(N, {0, 0}));
-    for (int i = 1; i < N; i++)
+    pair_matrix ratios(N, vector<pair<long, long>>(N, {0, 0}));
+    for (long i = 1; i < N; i++)
     {
-        int a, b, p, q;
+        long a, b, p, q;
         cin >> a >> b >> p >> q;
         reduction(p, q);
         ratios[a][b] = {p, q};
@@ -57,7 +56,7 @@ int main(int argc, char const *argv[])
     return 0;
 }
 
-void reduction(int &p, int &q)
+void reduction(long &p, long &q)
 {
     if (p == q)
     {
@@ -66,13 +65,13 @@ void reduction(int &p, int &q)
     }
     else
     {
-        int GCD = get_GCD(max(p, q), min(p, q));
+        long GCD = get_GCD(max(p, q), min(p, q));
         p /= GCD;
         q /= GCD;
     }
 }
 
-int get_GCD(int p, int q)
+long get_GCD(long p, long q)
 {
     // p > q is guaranteed
     // p = 27, q = 15
@@ -84,48 +83,48 @@ int get_GCD(int p, int q)
     return q;
 }
 
-void solution(int N, pair_matrix &ratios, vector_map &ingredients)
+void solution(long N, pair_matrix &ratios, vector_map &ingredients)
 {
-    int LCM = 1;
-    vector<pair<int, int>> mass(N, {1, 1});
+    long LCM = 1;
+    vector<pair<long, long>> mass(N, {1, 1});
     calculate_ratio_BFS(N, mass, ratios, ingredients);
 
     for (auto m : mass)
     {
         reduction(m.first, m.second);
-        if (m.second > 1)
-            LCM = get_LCM(LCM, m.second);
+        LCM = get_LCM(LCM, m.second);
     }
 
     for (auto m : mass)
         cout << m.first * (LCM / m.second) << " ";
 }
 
-void calculate_ratio_BFS(int N, vector<pair<int, int>> &mass, pair_matrix &ratios, vector_map &ingredients)
+void calculate_ratio_BFS(long N, vector<pair<long, long>> &mass, pair_matrix &ratios, vector_map &ingredients)
 {
-    pair<int, int> std;
+    pair<long, long> std;
     vector<bool> visited(N, false);
-    queue<int> Q{{0}};
+    queue<long> Q{{0}};
     visited[0] = true;
     while (!Q.empty())
     {
-        int node = Q.front();
+        long node = Q.front();
         Q.pop();
         std = mass[node];
-        for (int next_node : ingredients[node])
+        for (long next_node : ingredients[node])
             if (!visited[next_node])
             {
                 Q.push(next_node);
                 visited[next_node] = true;
                 mass[next_node].first = std.first * ratios[next_node][node].first;
                 mass[next_node].second = std.second * ratios[next_node][node].second;
+                reduction(mass[next_node].first, mass[next_node].second);
             }
     }
 }
 
-int get_LCM(int p, int q)
+long get_LCM(long p, long q)
 {
-    int GCD = get_GCD(max(p, q), min(p, q));
+    long GCD = get_GCD(max(p, q), min(p, q));
     return (p * q) / GCD;
 }
 
