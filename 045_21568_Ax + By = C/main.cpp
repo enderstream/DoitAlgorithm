@@ -22,10 +22,12 @@ void solution();
 int main(int argc, char const *argv[])
 {
     FAST_IO;
-    debug << "\n";
     if constexpr (local)
+    {
         (void)!freopen("./input.txt", "r", stdin);
-
+        debug << "\n";
+    }
+    // 이 문제는 채점준비중으로 전환됨
     // io here
     // debug << "Hello World!" << endl;
 
