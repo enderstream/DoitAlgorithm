@@ -1,11 +1,11 @@
 import sys
-from collections import deque
+from collections import defaultdict, deque
 
 sys.stdin = open("./input.txt", "r")
 input = lambda: sys.stdin.readline().strip()
 
 
-def BFS(N: int, K: int, X: int, city: list) -> list:
+def BFS(N: int, K: int, X: int, city: defaultdict) -> list:
     visited = [False] * (N + 1)
     dist = [0] * (N + 1)
     Q = deque([X])
@@ -14,7 +14,7 @@ def BFS(N: int, K: int, X: int, city: list) -> list:
     while Q:
         curr = Q.popleft()
         for node in range(1, N + 1):
-            if visited[node] or node not in city[curr]:
+            if visited[node] or city.get(curr) is None or node not in city[curr]:
                 continue
 
             dist[node] = dist[curr] + 1
@@ -26,7 +26,7 @@ def BFS(N: int, K: int, X: int, city: list) -> list:
     return dist
 
 
-def solution(N: int, K: int, X: int, city: list):
+def solution(N: int, K: int, X: int, city: defaultdict):
     dist = BFS(N, K, X, city)
     K_dist = []
     for i in range(1, N + 1):
@@ -43,7 +43,7 @@ def solution(N: int, K: int, X: int, city: list):
 
 if __name__ == "__main__":
     N, M, K, X = map(int, input().split())
-    city = [set() for _ in range(N + 1)]
+    city = defaultdict(set)
     for _ in range(M):
         u, v = map(int, input().split())
         city[u].add(v)
