@@ -73,23 +73,23 @@ bool intersection_check(vector<int> &sets, int a, int b)
 
 int get_head_set(vector<int> &sets, int set)
 {
-    if (set == sets[set]) // 내가 대표셋이라면
-        return set;
+    // if (set == sets[set]) // 내가 대표셋이라면
+    //     return set;
 
-    // 아니라면 대표셋 찾아
-    stack<int> S;
-    while (set != sets[set])
-    {
-        S.push(set);
-        set = sets[set];
-    }
+    // // 아니라면 대표셋 찾아
+    // stack<int> S;
+    // while (set != sets[set])
+    // {
+    //     S.push(set);
+    //     set = sets[set];
+    // }
 
-    // 전부 대표셋으로 업데이트
-    while (!S.empty())
-    {
-        sets[S.top()] = set;
-        S.pop();
-    }
+    // // 전부 대표셋으로 업데이트
+    // while (!S.empty())
+    // {
+    //     sets[S.top()] = set;
+    //     S.pop();
+    // }
 
-    return set;
+    // return set;
 }
