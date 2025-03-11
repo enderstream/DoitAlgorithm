@@ -21,10 +21,8 @@ constexpr bool local = true;
 using namespace std;
 
 void solution(int n, int m);
-void unionise(vector<int> &sets, int a, int b);
-bool intersection_check(vector<int> &sets, int a, int b);
-int get_head_set(vector<int> &sets, int set);
- 
+int find_head(vector<int> &set, int e);
+
 int main(int argc, char const *argv[])
 {
     FAST_IO;
@@ -36,61 +34,52 @@ int main(int argc, char const *argv[])
     cin >> n >> m;
 
     solution(n, m);
+
     return 0;
 }
 
 void solution(int n, int m)
 {
-    vector<int> sets(n + 1, 0);
-    for (int i = 1; i <= n; i++)
-        sets[i] = i;
+    vector<int> set(n + 1);
+    for (int i = 0; i <= n; i++)
+        set[i] = i;
 
-    for (int i = 1; i <= m; i++)
+    for (int i = 0; i < m; i++)
     {
-        int op, a, b;
-        cin >> op >> a >> b;
-
-        if (op == 0)
-            unionise(sets, a, b);
-        else if (intersection_check(sets, a, b)) // op == 1
+        int cmd, a, b;
+        cin >> cmd >> a >> b;
+        if (cmd == 0) // unionise
+        {
+            int head_a = find_head(set, a);
+            int head_b = find_head(set, b);
+            int new_head = min(head_a, head_b);
+            set[head_a] = new_head; // set[a] = new_head 하면 안됨!!!
+            set[head_b] = new_head; // set[b] = new_head 하면 안됨!!!
+        }
+        else if (find_head(set, a) == find_head(set, b)) // cmd == 1 and same head
             cout << "YES\n";
-        else
+        else // cmd == 1 and diff head
             cout << "NO\n";
     }
 }
 
-void unionise(vector<int> &sets, int a, int b)
+int find_head(vector<int> &set, int e)
 {
-    int head = min(get_head_set(sets, a), get_head_set(sets, b));
-    sets[a] = head;
-    sets[b] = head;
-}
+    // 내가 루트라면 즉시 리턴
+    if (set[e] == e)
+        return e;
 
-bool intersection_check(vector<int> &sets, int a, int b)
-{
-    return get_head_set(sets, a) == get_head_set(sets, b);
-}
+    // 루트 찾기
+    int root = e;
+    while (set[root] != root)
+        root = set[root];
 
-int get_head_set(vector<int> &sets, int set)
-{
-    return 0;
-    // if (set == sets[set]) // 내가 대표셋이라면
-    //     return set;
-
-    // // 아니라면 대표셋 찾아
-    // stack<int> S;
-    // while (set != sets[set])
-    // {
-    //     S.push(set);
-    //     set = sets[set];
-    // }
-
-    // // 전부 대표셋으로 업데이트
-    // while (!S.empty())
-    // {
-    //     sets[S.top()] = set;
-    //     S.pop();
-    // }
-
-    // return set;
+    // 경로 압축
+    while (e != root)
+    {
+        int parent = set[e]; // 부모를 일단 따로 저장
+        set[e] = root;       // 나는 내 부모를 루트로 교체
+        e = parent;          // 부모를 나로 교체해서 다음 루프에서 부모의 부모도 루트로 교체되도록 설정
+    }
+    return root;
 }
