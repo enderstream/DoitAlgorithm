@@ -24,7 +24,7 @@ void solution(int n, int m);
 void unionise(vector<int> &sets, int a, int b);
 bool intersection_check(vector<int> &sets, int a, int b);
 int get_head_set(vector<int> &sets, int set);
-
+ 
 int main(int argc, char const *argv[])
 {
     FAST_IO;
@@ -73,6 +73,7 @@ bool intersection_check(vector<int> &sets, int a, int b)
 
 int get_head_set(vector<int> &sets, int set)
 {
+    return 0;
     // if (set == sets[set]) // 내가 대표셋이라면
     //     return set;
 
