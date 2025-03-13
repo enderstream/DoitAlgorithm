@@ -234,3 +234,7 @@ cython_debug/
 
 # C++ debug files
 *.dSYM
+
+# C++ execution files
+# main
+main.exe
