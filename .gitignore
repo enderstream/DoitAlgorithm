@@ -238,3 +238,6 @@ cython_debug/
 # C++ execution files
 main
 main.exe
+
+# vscode settings
+.vscode/
