@@ -1,0 +1,5 @@
+# 모든 텍스트 파일에 LF 사용
+* text=auto eol=lf
+
+# 쉘 스크립트는 반드시 LF 사용
+*.sh text eol=lf
