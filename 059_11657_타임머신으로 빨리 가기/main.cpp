@@ -29,8 +29,9 @@ typedef unordered_map<ll, unordered_map<ll, ll>> bus_route; // 출발 -> 도착 
 typedef pair<ll, ll> path_t;
 
 void solution(ll N, bus_route &bus_route);
+bool ckeck_negative_cycle(ll N, bus_route &bus_route, vector<ll> &DP);
 
-int main(ll argc, char const *argv[])
+int main(int argc, char const *argv[])
 {
     FAST_IO;
     if constexpr (local)
@@ -54,17 +55,26 @@ void solution(ll N, bus_route &bus_route)
 {
     vector<ll> DP(N + 1, INF);
     DP[1] = 0;
-    for (ll i = 1; i < N; i++) // for 루프 추가
-        for (ll j = 1; j <= N; j++)
-            for (const path_t &route : bus_route[j])
-                DP[route.first] = min(DP[route.first], DP[j] + route.second);
+    for (ll i = 1; i < N; i++)      // N-1회 반복 :: "최대 i개의 간선을 사용"이 아님!!!! << 절대 이렇게 생각 금지
+        for (ll j = 1; j <= N; j++) // 모든 출발 노드에 대해
+            if (DP[j] != INF)       // 도달 가능한 노드만 고려
+                for (const path_t &route : bus_route[j])
+                    DP[route.first] = min(DP[route.first], DP[j] + route.second);
 
     // 음수 사이클 검사 -> 한번 더 루프했을 때, 변화가 생긴다면 음수 사이클이 있다는 뜻
-    for (ll i = 1; i <= N; i++)
-        for (const path_t &route : bus_route[i])
-            if (DP[i] == INF || DP[route.first] > DP[i] + route.second)
-                DP[i] = -1;
+    if (ckeck_negative_cycle(N, bus_route, DP))
+        cout << -1;
+    else
+        for (ll i = 2; i <= N; i++)
+            DP[i] == INF ? cout << "-1\n" : cout << DP[i] << "\n";
+}
 
-    for (ll i = 2; i <= N; i++)
-        cout << DP[i] << "\n";
+bool ckeck_negative_cycle(ll N, bus_route &bus_route, vector<ll> &DP)
+{
+    for (ll j = 1; j <= N; j++)
+        if (DP[j] != INF) // j로 갈 수 있는 경로가 있는 경우에만 탐색 시도
+            for (const path_t &route : bus_route[j])
+                if (DP[route.first] > DP[j] + route.second)
+                    return true; // 음수 사이클 발견
+    return false;
 }

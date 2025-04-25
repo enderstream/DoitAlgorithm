@@ -19,7 +19,7 @@ constexpr bool local = true;
     std::cout
 #define endl "\n"
 
-#define INF 9000000000000000000
+#define NEG_INF -9000000000000000000
 
 using namespace std;
 
@@ -28,6 +28,7 @@ typedef pair<i64, i64> path_t;
 typedef unordered_map<i64, unordered_map<i64, i64>> city_map;
 
 string solution(i64 N, i64 dept, i64 dest, i64 M, city_map &city_map);
+bool check_positive_cycle(i64 dept, i64 dest, i64 N, city_map &city_map, vector<i64> DP);
 
 int main(int argc, char const *argv[])
 {
@@ -52,7 +53,7 @@ int main(int argc, char const *argv[])
     // it->first : 출발도시
     // path.first : 도착도시
     // path.second : 출발도시 -> 도착도시로 가는데 드는 비용
-    for (city_map::iterator it = city_map.begin(); it != city_map.end(); it++)
+    for (auto it = city_map.begin(); it != city_map.end(); it++)
         for (const path_t &path : city_map[it->first])
             city_map[it->first][path.first] = profit[path.first] - city_map[it->first][path.first];
 
@@ -67,31 +68,30 @@ int main(int argc, char const *argv[])
 
 string solution(i64 N, i64 dept, i64 dest, i64 M, city_map &city_map)
 {
-    vector<i64> DP(N, -INF);
+    vector<i64> DP(N, NEG_INF);
     DP[dept] = 0;
-    for (i64 i = 0; i <= 2 * N; i++)
-        for (city_map::iterator it = city_map.begin(); it != city_map.end(); it++)
-        {
-            i64 start = it->first;
-            for (const path_t &path : city_map[it->first])
-            {
-                i64 end = path.first;
-                i64 cost = path.second;
-                if (DP[start] == INF)
-                    DP[end] = INF;
-                else if (DP[start] != -INF && DP[end] < DP[start] + cost)
-                {
-                    DP[end] = DP[start] + cost;
-                    if (i >= N - 1)
-                        DP[end] = INF;
-                }
-            }
-        }
+    for (i64 i = 1; i < N; i++)     // N-1 :: 도시 개수 -1회 반복
+        for (i64 j = 0; j < N; j++) // 0번도시부터 N-1번 도시까지
+            if (DP[j] != NEG_INF)
+                for (const path_t &path : city_map[j])
+                    DP[path.first] = max(DP[path.first], DP[j] + path.second); // path.first: 도착지, path.second: 출발지(j)에서 도착지(path.first)로 가는 비용
 
-    if (DP[dest] == -INF)
-        return "gg";
-    else if (DP[dest] == INF)
-        return "Gee";
+    if (DP[dest] == NEG_INF)
+        return "gg"; // gg // 도달할 수 없는지부터 확인
+    else if (check_positive_cycle(DP[dest], dest, N, city_map, DP))
+        return "Gee"; // 도달할 수 있는데, 양수 사이클이 있을 떄
     else
-        return to_string(DP[dest]);
+        return to_string(DP[dest]); // 그 외
+}
+
+bool check_positive_cycle(i64 cost, i64 dest, i64 N, city_map &city_map, vector<i64> DP)
+{
+    // 양수사이클을 체크하기위해 한번더 업데이트
+    for (i64 j = 0; j < N; j++) // 0번도시부터 N-1번 도시까지 -> dept부터 dest까지의 알려진 최단 경로에 대해서만 검사
+        if (DP[j] != NEG_INF)
+            for (const path_t &path : city_map[j])
+                    DP[path.first] = max(DP[path.first], DP[j] + path.second); // path.first: 도착지, path.second: 출발지(j)에서 도착지(path.first)로 가는 비용
+
+    // 변했다면(커졌다면, 즉 양수사이클이 있다면) true, 안 변했다면(그대로라면, 즉 양수사이클이 없다면) false
+    return DP[dest] != cost;
 }
