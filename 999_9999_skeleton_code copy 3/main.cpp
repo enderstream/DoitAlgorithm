@@ -22,7 +22,6 @@ void solution();
 int main(int argc, char const *argv[])
 {
     FAST_IO;
-    debug << "\n";
     if constexpr (local)
         (void)!freopen("./input.txt", "r", stdin);
 

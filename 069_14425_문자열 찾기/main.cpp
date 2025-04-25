@@ -1,4 +1,5 @@
 #include <iostream>
+#include <unordered_set>
 
 #ifdef BOJ // 백준 채점환경
 constexpr bool local = false;
@@ -17,22 +18,37 @@ constexpr bool local = true;
 
 using namespace std;
 
-void solution();
+void solution(int M, unordered_set<string> &string_set);
 
 int main(int argc, char const *argv[])
 {
     FAST_IO;
-    debug << "\n";
     if constexpr (local)
         (void)!freopen("./input.txt", "r", stdin);
 
-    // io here
-    // debug << "Hello World!" << endl;
+    int N, M;
+    cin >> N >> M;
+    string s;
+    unordered_set<string> string_set;
+    for (int i = 0; i < N; i++)
+    {
+        cin >> s;
+        string_set.insert(s);
+    }
 
-    solution();
+    solution(M, string_set);
     return 0;
 }
 
-void solution()
+void solution(int M, unordered_set<string> &string_set)
 {
+    string s;
+    int cnt = 0;
+    for (int i = 0; i < M; i++)
+    {
+        cin >> s;
+        if (string_set.find(s) != string_set.end())
+            cnt++;
+    }
+    cout << cnt;
 }
