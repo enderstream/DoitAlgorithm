@@ -82,7 +82,6 @@ i64 prefix_sum(int index, int N, vector<i64> &fenwik_tree)
     return sum;
 }
 
-
 /*
 
 // 세그먼트 트리를 사용한 버전
@@ -101,14 +100,14 @@ int main(int argc, char const *argv[])
     cin.tie(0);
     cout.tie(0);
 
-    // freopen("input.txt", "r", stdin);
+    freopen("input.txt", "r", stdin);
 
     ll N, M, K, a, b, c, d, sum;
     cin >> N >> M >> K;
     vector<ll> vec(N + 1, 0);
-    ll height = (ll)ceil(log2(N));
-    ll leaf_start = (1 << height);
-    vector<ll> tree((1 << (height + 1)) - 1, 0);
+    ll level = (ll)ceil(log2(N));
+    ll leaf_start = (1 << level);
+    vector<ll> tree((1 << (level + 1)), 0);
 
     for (ll i = 1; i <= N; i++)
         cin >> vec[i];
