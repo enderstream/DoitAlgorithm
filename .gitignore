@@ -241,3 +241,6 @@ main.exe
 
 # vscode settings
 .vscode/
+
+# comparison
+comp.cpp
