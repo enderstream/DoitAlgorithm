@@ -23,7 +23,7 @@ using namespace std;
 void solution(int N, vector<vector<int>> &trust_network);
 int BFS(int target, int N, vector<vector<int>> &trust_network);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     debug << "\n";

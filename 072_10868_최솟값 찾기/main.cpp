@@ -25,7 +25,7 @@ using namespace std;
 void solution(int N, int M, vector<int> &vec);
 void find_min(int a, int b, int leaf_start, vector<int> &segment_tree);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)

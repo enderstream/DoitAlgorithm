@@ -35,7 +35,7 @@ struct compare
 void solution(int N, int M, vector<vector<int>> &country);
 bool boundary_check(int i, int j, int N, int M);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)
@@ -173,7 +173,7 @@ bool boundary_check(int i, int j, int N, int M)
 // void prim(int N, int M, int si, int sj, unordered_map<int, vector<vector<int>>> &graph);
 // bool boundary_check(int i, int j, int N, int M);
 
-// int main(int argc, char const *argv[])
+// int main(int argc, const char *argv[])
 // {
 //     FAST_IO;
 //     if constexpr (local)

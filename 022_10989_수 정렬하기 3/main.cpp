@@ -5,7 +5,7 @@ using namespace std;
 
 void solution(vector<int> vec);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
@@ -15,15 +15,14 @@ int main(int argc, char const *argv[])
     int N;
     cin >> N;
 
-    vector<int> vec(10001,0);
+    vector<int> vec(10001, 0);
 
     for (int i = 0; i < N; i++)
     {
         int n;
         cin >> n;
-        vec[n]++; 
+        vec[n]++;
     }
-    
 
     solution(vec);
     return 0;

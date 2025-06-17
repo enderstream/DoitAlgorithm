@@ -35,7 +35,7 @@ struct compare
     }
 };
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     debug << "\n";
@@ -70,14 +70,14 @@ int main(int argc, char const *argv[])
 void solution(int V, int E, graph_t &graph, int K)
 {
     priority_queue<path_t, vector<path_t>, compare> PQ; // 우선수위 큐의 두번째 요소인 가중치를 기준으로 오름차순 정렬
-    vector<int> min_dist(V + 1, INF);   // 최단 거리를 저장할 벡터
-    vector<bool> visited(V + 1, false); // 방문여부를 저장할 벡터
-    min_dist[K] = 0;                    // 출발지는 비용이 0
-    PQ.push({K, 0}); // 시작 정점 추가
+    vector<int> min_dist(V + 1, INF);                   // 최단 거리를 저장할 벡터
+    vector<bool> visited(V + 1, false);                 // 방문여부를 저장할 벡터
+    min_dist[K] = 0;                                    // 출발지는 비용이 0
+    PQ.push({K, 0});                                    // 시작 정점 추가
 
     while (!PQ.empty())
     {
-        path_t current_path = PQ.top();  // current_path.first: 현재 정점, current_path.second: 시작점에서의 거리
+        path_t current_path = PQ.top(); // current_path.first: 현재 정점, current_path.second: 시작점에서의 거리
         PQ.pop();
 
         // 이 정점이 처리되지 않은 경우만 작업
@@ -102,6 +102,6 @@ void solution(int V, int E, graph_t &graph, int K)
     }
 
     // 결과 출력
-    for (int i = 1 ; i <= V; i++)
+    for (int i = 1; i <= V; i++)
         (min_dist[i] == INF) ? cout << "INF\n" : cout << min_dist[i] << "\n";
 }

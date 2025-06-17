@@ -23,7 +23,7 @@ using namespace std;
 
 void solution(int N, vector<vector<int>> &graph);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     debug << "\n";
@@ -53,11 +53,11 @@ void solution(int N, vector<vector<int>> &graph)
             for (int dest = 0; dest < N; dest++)
             {
                 // 이미 경로가 있는 것으로 확인 되었으면 넘어감
-                if(graph[dept][dest] == 1)
+                if (graph[dept][dest] == 1)
                     continue;
-                    
+
                 // 경로가 처음으로 발견되었으면 표시하고 넘어감
-                if(graph[dept][layover] + graph[layover][dest] < INF)
+                if (graph[dept][layover] + graph[layover][dest] < INF)
                     graph[dept][dest] = 1;
 
                 // 기존 플로이드처럼 해도 됨

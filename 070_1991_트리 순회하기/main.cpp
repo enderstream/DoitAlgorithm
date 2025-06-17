@@ -26,7 +26,7 @@ void preorder(tree_t &tree);
 void inorder(tree_t &tree);
 void postorder(tree_t &tree);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)

@@ -9,7 +9,7 @@ void solution(int N, int K, vector<int> &vec);
 void iterative_quick_sort(int N, vector<int> &vec);
 int partition(vector<int> &vec, int start, int end);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     ios::sync_with_stdio(0);
     cin.tie(0);

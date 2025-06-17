@@ -22,7 +22,7 @@ using namespace std;
 int solution(int N, int M);
 int find_head(vector<int> &people, int e);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     debug << "\n";

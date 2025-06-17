@@ -21,7 +21,7 @@ using namespace std;
 void solution(int A, int B);
 int get_GCD(int A, int B);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)
@@ -47,7 +47,7 @@ int main(int argc, char const *argv[])
 void solution(int A, int B)
 {
     int G = get_GCD(A, B);
-    cout << A * B / G << "\n"; 
+    cout << A * B / G << "\n";
 }
 
 int get_GCD(int A, int B)

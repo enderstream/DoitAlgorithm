@@ -26,7 +26,7 @@ typedef unordered_map<int, vector<pair<int, int>>> pair_dict;
 void solution(int V, pair_dict &tree);
 pair<int, int> BFS(int V, pair_dict &tree, int start_node);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)
@@ -37,7 +37,7 @@ int main(int argc, char const *argv[])
     pair_dict tree;
     for (int i = 1; i <= V; i++)
         tree[i];
-    
+
     for (int i = 1; i <= V; i++)
     {
         int v;
@@ -68,7 +68,7 @@ pair<int, int> BFS(int V, pair_dict &tree, int start_node)
     vector<bool> visited(V + 1, false);
     vector<int> distance(V + 1, 0);
     queue<int> Q;
-    
+
     Q.push(start_node);
     visited[start_node] = true;
 
@@ -82,9 +82,9 @@ pair<int, int> BFS(int V, pair_dict &tree, int start_node)
             {
                 visited[next_node.first] = true;
                 Q.push(next_node.first);
-                distance[next_node.first] = distance[node]+next_node.second;
+                distance[next_node.first] = distance[node] + next_node.second;
             }
-        
+
     } // 최대값인 인덱스, 최대 거리 리턴
     return pair<int, int>(
         max_element(distance.begin(), distance.end()) - distance.begin(),

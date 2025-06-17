@@ -25,7 +25,7 @@ typedef pair<int, int> tuple_t;
 void solution(int A, int B, int C);
 vector<int> BFS(int A, int B, int C);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     debug << "\n";

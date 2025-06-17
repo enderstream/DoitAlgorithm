@@ -22,7 +22,7 @@ using namespace std;
 void solution(int N, vector<long> &vec, int M, vector<long> &targets);
 bool binary_search(long target, int N, vector<long> &vec);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)

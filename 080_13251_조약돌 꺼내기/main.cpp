@@ -26,7 +26,7 @@ void solution(int M, vector<int> &stones, int K);
 ui64 calc_combination(int n, int r);
 ui64 calc_gcd(ui64 a, ui64 b);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)

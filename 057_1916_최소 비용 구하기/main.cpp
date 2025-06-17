@@ -36,7 +36,7 @@ struct compare
 
 void solution(int dept, int dest, int N, bus_route &bus_route);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     debug << "\n";

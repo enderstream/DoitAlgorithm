@@ -21,7 +21,7 @@ using namespace std;
 
 void solution(int N, int M, vector<int> &vec, int L, int R);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)
@@ -51,7 +51,7 @@ void solution(int N, int M, vector<int> &vec, int left, int right)
         int mid = (left + right) / 2;
         int saved_lectures = 0;
         int blueray_disks = 0;
-        for(int lecture : vec)
+        for (int lecture : vec)
         {
             if (saved_lectures + lecture > mid)
             {

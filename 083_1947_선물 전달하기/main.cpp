@@ -23,7 +23,7 @@ typedef unsigned long long ui64;
 
 ui64 solution(ui64 N);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)
@@ -36,12 +36,14 @@ int main(int argc, char const *argv[])
     return 0;
 }
 
-ui64 solution(ui64 N) {
-    if (N <= 3) 
+ui64 solution(ui64 N)
+{
+    if (N <= 3)
         return N - 1;
-    
+
     ui64 prev = 1, curr = 2;
-    for (ui64 i = 4; i <= N; i++) {
+    for (ui64 i = 4; i <= N; i++)
+    {
         ui64 next = ((i - 1) * (prev + curr)) % MOD;
         prev = curr;
         curr = next;

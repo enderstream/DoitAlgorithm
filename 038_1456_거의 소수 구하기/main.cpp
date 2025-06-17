@@ -25,7 +25,7 @@ vector<int> sieve_of_eratosthenes(int B);
 void solution(i64 A, i64 B);
 int log_p_N(i64 prime, i64 N);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)

@@ -22,7 +22,7 @@ using namespace std;
 
 void solution(string &s1, string &s2);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)
@@ -48,7 +48,7 @@ void solution(string &s1, string &s2)
                 DP[i][j] = max(DP[i - 1][j], DP[i][j - 1]);
 
     cout << DP[s1_len][s2_len];
-    
+
     string LCS = "";
     if (DP[s1_len][s2_len] != 0)
     {
@@ -65,6 +65,7 @@ void solution(string &s1, string &s2)
                 s2_len--;
 
         reverse(LCS.begin(), LCS.end());
-        cout << "\n" << LCS;
+        cout << "\n"
+             << LCS;
     }
 }

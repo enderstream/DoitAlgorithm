@@ -26,7 +26,7 @@ typedef vector<unordered_set<int>> vector_set;
 void solution(int N, vector_set &trust_network);
 void DFS(vector<bool> &visited, vector<int> &DP, int target, vector_set &trust_network);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     debug << "\n";

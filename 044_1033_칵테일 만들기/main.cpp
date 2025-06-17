@@ -30,7 +30,7 @@ void solution(long N, pair_matrix &ratios, vector_map &ingredients);
 void calculate_ratio_BFS(long N, vector<pair<long, long>> &mass, pair_matrix &ratios, vector_map &ingredients);
 long get_LCM(long p, long q);
 
-int main(long argc, char const *argv[])
+int main(long argc, const char *argv[])
 {
     FAST_IO;
     debug << "\n";

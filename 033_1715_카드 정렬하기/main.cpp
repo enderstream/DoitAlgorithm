@@ -23,7 +23,7 @@ typedef priority_queue<int, vector<int>, greater<int>> min_heap;
 
 void solution(int N, min_heap &card_deck);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)
@@ -58,6 +58,6 @@ void solution(int N, min_heap &card_deck)
 
         card_deck.push(deck1 + deck2);
     }
-    
+
     cout << total_compare;
 }

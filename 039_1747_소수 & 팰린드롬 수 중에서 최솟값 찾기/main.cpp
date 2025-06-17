@@ -23,7 +23,7 @@ int solution(int N);
 bool is_prime(int number);
 bool is_palindrome(int prime);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)

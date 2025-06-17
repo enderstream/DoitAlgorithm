@@ -8,7 +8,7 @@ void solution(int N, vector<int> &vec);
 void iterative_merge_sort(int N, vector<int> &vec);
 vector<int> safe_slice(const vector<int> &vec, int start, int len);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     ios::sync_with_stdio(0);
     cin.tie(0);

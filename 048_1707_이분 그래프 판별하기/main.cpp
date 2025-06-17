@@ -22,7 +22,7 @@ using namespace std;
 void solution(int V, vector<vector<int>> &graph);
 string DFS(int target, vector<int> &visited, int V, vector<vector<int>> &graph);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     debug << "\n";

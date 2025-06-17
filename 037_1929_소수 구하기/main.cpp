@@ -20,7 +20,7 @@ using namespace std;
 
 void solution(int M, int N);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)
@@ -48,7 +48,7 @@ void solution(int M, int N)
                 primes[i] = false;
 
     for (int p = M; p <= N; p++)
-        if(primes[p])
+        if (primes[p])
             cout << p << "\n";
 }
 
@@ -67,5 +67,3 @@ void solution(int M, int N)
 9,223,372,036,854,775,807
 9 * 10^18
 */
-
-

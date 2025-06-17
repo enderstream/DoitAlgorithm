@@ -24,7 +24,7 @@ typedef unsigned long long i64;
 void solution(i64 min, i64 max);
 vector<i64> sieve_of_eratosthenes(i64 max);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)

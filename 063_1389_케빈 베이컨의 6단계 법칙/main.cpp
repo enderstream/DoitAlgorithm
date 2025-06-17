@@ -24,7 +24,7 @@ using namespace std;
 
 void solution(int N, vector<vector<int>> &friends);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     debug << "\n";
@@ -65,6 +65,6 @@ void solution(int N, vector<vector<int>> &friends)
     for (int i = 2; i <= N; i++)
         if (friends[i][0] < friends[kebin_bacon][0])
             kebin_bacon = i;
-    
+
     cout << kebin_bacon;
 }

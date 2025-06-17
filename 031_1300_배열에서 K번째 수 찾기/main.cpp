@@ -20,7 +20,7 @@ using namespace std;
 
 void solution(long N, long K);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)
@@ -40,7 +40,7 @@ void solution(long N, long K)
     while (L <= R)
     {
         long M = (L + R) / 2, cnt = 0;
-        
+
         for (long i = 1; i <= N; i++)
             cnt += min(M / i, N);
         if (cnt < K)

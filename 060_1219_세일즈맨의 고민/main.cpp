@@ -29,7 +29,7 @@ typedef unordered_map<i64, unordered_map<i64, i64>> city_map;
 
 string solution(i64 N, i64 dept, i64 dest, i64 M, city_map &city_map);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     debug << "\n";

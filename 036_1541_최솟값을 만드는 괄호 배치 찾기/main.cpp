@@ -22,7 +22,7 @@ using namespace std;
 vector<string> expression_tokenizer(string &expression);
 void solution(string &expression);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)

@@ -13,7 +13,7 @@ void solution(int N, dict &graph, int V);
 void DFS(int N, dict &graph, int V);
 void BFS(int N, dict &graph, int V);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     ios::sync_with_stdio(0);
     cin.tie(0);

@@ -27,7 +27,7 @@ void solution(int N, int M, int K, vector<int> &origin);
 void update_tree(int index, int alter, int N, vector<i64> &segment_tree);
 void get_product(int leaf_start, int from, int to, vector<i64> &segment_tree);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)

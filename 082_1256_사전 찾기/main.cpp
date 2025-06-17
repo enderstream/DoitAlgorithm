@@ -24,7 +24,7 @@ typedef unsigned long long ui64;
 
 string solution(int N, int M, ui64 K);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)

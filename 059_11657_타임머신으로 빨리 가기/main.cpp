@@ -31,7 +31,7 @@ typedef pair<ll, ll> path_t;
 void solution(ll N, bus_route &bus_route);
 bool ckeck_negative_cycle(ll N, bus_route &bus_route, vector<ll> &DP);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)

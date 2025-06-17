@@ -10,7 +10,7 @@ typedef unordered_map<int, vector<int>> dict;
 void solution(int N, dict &graph);
 void DFS(vector<bool> &visited, stack<int> &stk, dict &graph);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     ios::sync_with_stdio(0);
     cin.tie(0);

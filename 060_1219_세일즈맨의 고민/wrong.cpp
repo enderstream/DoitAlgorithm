@@ -30,7 +30,7 @@ typedef unordered_map<i64, unordered_map<i64, i64>> city_map;
 string solution(i64 N, i64 dept, i64 dest, i64 M, city_map &city_map);
 bool check_positive_cycle(i64 dept, i64 dest, i64 N, city_map &city_map, vector<i64> DP);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     debug << "\n";
@@ -90,7 +90,7 @@ bool check_positive_cycle(i64 cost, i64 dest, i64 N, city_map &city_map, vector<
     for (i64 j = 0; j < N; j++) // 0번도시부터 N-1번 도시까지 -> dept부터 dest까지의 알려진 최단 경로에 대해서만 검사
         if (DP[j] != NEG_INF)
             for (const path_t &path : city_map[j])
-                    DP[path.first] = max(DP[path.first], DP[j] + path.second); // path.first: 도착지, path.second: 출발지(j)에서 도착지(path.first)로 가는 비용
+                DP[path.first] = max(DP[path.first], DP[j] + path.second); // path.first: 도착지, path.second: 출발지(j)에서 도착지(path.first)로 가는 비용
 
     // 변했다면(커졌다면, 즉 양수사이클이 있다면) true, 안 변했다면(그대로라면, 즉 양수사이클이 없다면) false
     return DP[dest] != cost;

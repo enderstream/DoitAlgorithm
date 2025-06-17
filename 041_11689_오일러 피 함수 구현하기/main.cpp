@@ -26,7 +26,7 @@ void solution(i64 n);
 vector<i64> sieve_of_eratosthenes(i64 n);
 unordered_set<i64> find_factors(i64 n);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)

@@ -26,7 +26,7 @@ typedef vector<unordered_set<int>> vector_set;
 void solution(int N, int K, int X, vector_set &city);
 vector<int> BFS(int N, int K, int X, vector_set &city);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     debug << "\n";

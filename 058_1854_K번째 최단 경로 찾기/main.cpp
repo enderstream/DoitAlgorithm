@@ -36,7 +36,7 @@ struct compare
 
 void solution(int n, int m, int k, city_map &city_map);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     debug << "\n";

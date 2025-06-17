@@ -20,7 +20,7 @@ using namespace std;
 
 void solution(vector<pair<int, int>> &query_set);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)

@@ -5,7 +5,7 @@ using namespace std;
 
 void solution(int M, vector<vector<int>> &matrix);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     ios::sync_with_stdio(0);
     cin.tie(0);

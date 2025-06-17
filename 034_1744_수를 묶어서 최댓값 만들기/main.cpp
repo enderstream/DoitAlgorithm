@@ -21,7 +21,7 @@ using namespace std;
 
 void solution(bool zero, int P, int N, vector<int> &pos, vector<int> &neg);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)
@@ -56,12 +56,12 @@ void solution(bool zero, int P, int N, vector<int> &pos, vector<int> &neg)
     int sum = 0;
     // 양수 먼저 계산
     // 1부터 처리
-    for (int i = P-1; i >= 0; i--)
-        if(pos[i] == 1)
+    for (int i = P - 1; i >= 0; i--)
+        if (pos[i] == 1)
             sum++;
 
     // 전체 양수 개수 중 1개수 제외
-    P-= sum;
+    P -= sum;
     for (int i = 0; i <= P - 2; i += 2)
         sum += pos[i] * pos[i + 1];
     if (P % 2 == 1)

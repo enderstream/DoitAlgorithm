@@ -13,7 +13,7 @@ map<string, int> ACGT{
 void solution(int S, int P, string &DNA_str, vector<int> &DNA_vec);
 bool is_password_strong(vector<int> &window, vector<int> &DNA_vec);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     ios::sync_with_stdio(0);
     cin.tie(0);

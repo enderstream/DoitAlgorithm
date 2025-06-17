@@ -11,7 +11,7 @@ typedef unordered_map<int, vector<int>> dict;
 int solution(int N, dict &friends);
 bool find_friend_chain(dict &friends, int N, int i);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     ios::sync_with_stdio(0);
     cin.tie(0);

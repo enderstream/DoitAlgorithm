@@ -21,7 +21,7 @@ using namespace std;
 
 void solution(int N);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)
@@ -41,8 +41,10 @@ void solution(int N)
     for (int i = 1; i < N; i++)
     {
         DP[i + 1] = min(DP[i] + 1, DP[i + 1]);
-        if (i * 2 <= N) DP[i * 2] = min(DP[i] + 1, DP[i * 2]);
-        if (i * 3 <= N) DP[i * 3] = min(DP[i] + 1, DP[i * 3]);
+        if (i * 2 <= N)
+            DP[i * 2] = min(DP[i] + 1, DP[i * 2]);
+        if (i * 3 <= N)
+            DP[i * 3] = min(DP[i] + 1, DP[i * 3]);
     }
     cout << DP[N];
 }

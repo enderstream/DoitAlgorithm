@@ -21,7 +21,7 @@ using namespace std;
 
 void solution(int n, vector<int> &nums);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)

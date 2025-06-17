@@ -23,7 +23,7 @@ using namespace std;
 
 void solution(int N, int M);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     debug << "\n";

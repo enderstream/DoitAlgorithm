@@ -22,7 +22,7 @@ constexpr bool local = true;
 using namespace std;
 void solution(int N);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     debug << "\n";

@@ -33,7 +33,7 @@ struct compare
 
 void solution(int N, vector<vector<int>> &network);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     debug << "\n";

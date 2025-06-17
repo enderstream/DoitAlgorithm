@@ -27,7 +27,7 @@ ui64 calc_factorial(int N);
 
 vector<ui64> factorials;
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)

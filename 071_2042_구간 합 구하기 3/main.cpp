@@ -25,7 +25,7 @@ void solution(int N, int M, int K, vector<i64> &fenwik_tree);
 void update_tree(int index, i64 delta, int N, vector<i64> &fenwik_tree);
 i64 prefix_sum(int index, int N, vector<i64> &fenwik_tree);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)
@@ -94,7 +94,7 @@ using namespace std;
 
 typedef long long ll;
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     ios::sync_with_stdio(0);
     cin.tie(0);

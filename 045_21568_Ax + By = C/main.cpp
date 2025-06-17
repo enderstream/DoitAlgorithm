@@ -19,7 +19,7 @@ using namespace std;
 
 void solution();
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)

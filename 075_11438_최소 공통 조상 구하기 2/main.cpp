@@ -27,7 +27,7 @@ typedef vector<pair<int, int>> query_set_t;
 void solution(int N, int M, tree_t &temp_tree, query_set_t &query_set);
 tree_t organize_tree(int N, tree_t &temp_tree, vector<int> &depth, int &max_step);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)
@@ -153,7 +153,7 @@ tree_t organize_tree(int N, tree_t &temp_tree, vector<int> &depth, int &max_step
 // void solution(int N, int M, tree_t &temp_tree, query_set_t &query_set);
 // tree_t organize_tree(int N, tree_t &temp_tree, vector<int> &depth);
 
-// int main(int argc, char const *argv[])
+// int main(int argc, const char *argv[])
 // {
 //     FAST_IO;
 //     if constexpr (local)

@@ -5,7 +5,7 @@ using namespace std;
 
 string solution(int n);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     ios::sync_with_stdio(0);
     cin.tie(0);

@@ -35,7 +35,7 @@ struct compare
 
 void solution(int V, int E, edges &edges);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     debug << "\n";
@@ -78,7 +78,7 @@ void solution(int V, int E, edges &edges)
             visited[next_edge.first] = true;
             total_weight += next_edge.second;
             for (const edge &edge : edges[next_edge.first])
-                if(!visited[edge.first])    
+                if (!visited[edge.first])
                     PQ.push(edge);
         }
     }

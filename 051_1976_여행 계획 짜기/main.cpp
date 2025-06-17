@@ -21,7 +21,7 @@ using namespace std;
 bool solution(int N, int M);
 int find_head(vector<int> &cities, int e);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     debug << "\n";
@@ -79,7 +79,7 @@ int find_head(vector<int> &cities, int e)
     // 내가 루트라면 즉시 리턴
     if (cities[e] == e)
         return e;
-        
+
     // 루트 찾기
     int root = e; // e는 보존해두고, 루트를 찾아 타고 올라가기
     while (cities[root] != root)

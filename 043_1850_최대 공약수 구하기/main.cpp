@@ -23,7 +23,7 @@ typedef unsigned long long i64;
 void solution(i64 A, i64 B);
 i64 get_GCD(i64 A, i64 B);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)
@@ -41,11 +41,12 @@ int main(int argc, char const *argv[])
 
 void solution(i64 A, i64 B)
 {
-    if (A==B)
+    if (A == B)
         for (int i = 1; i <= A; i++)
             cout << 1;
-    else{
-        i64 G = get_GCD(max(A,B), min(A,B));
+    else
+    {
+        i64 G = get_GCD(max(A, B), min(A, B));
         for (int i = 1; i <= G; i++)
             cout << 1;
     }
@@ -54,9 +55,9 @@ void solution(i64 A, i64 B)
 i64 get_GCD(i64 A, i64 B)
 {
     // A > B is guaranteed
-    while(A%B != 0)
+    while (A % B != 0)
     {
-        A %=B;
+        A %= B;
         swap(A, B);
     }
     return B;

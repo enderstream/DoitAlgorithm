@@ -20,7 +20,7 @@ using namespace std;
 
 void solution(int N, int K, vector<int> &coins);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)
@@ -44,12 +44,12 @@ void solution(int N, int K, vector<int> &coins)
     {
         if (coin <= K)
         {
-            total_coins += K/coin;
+            total_coins += K / coin;
             K %= coin;
         }
-        if(!K)
+        if (!K)
             break;
     }
-    
-    cout <<  total_coins;
+
+    cout << total_coins;
 }

@@ -22,7 +22,7 @@ using namespace std;
 
 int solution(int N, unordered_map<int, vector<int>> &tree, int root);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)

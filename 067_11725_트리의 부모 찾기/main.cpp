@@ -21,7 +21,7 @@ using namespace std;
 
 void solution(int N, vector<vector<int>> &connections);
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     FAST_IO;
     if constexpr (local)
@@ -63,7 +63,7 @@ void solution(int N, vector<vector<int>> &connections)
                 }
             }
     }
-    
+
     for (int i = 2; i <= N; i++)
         cout << parents[i] << "\n";
 }
