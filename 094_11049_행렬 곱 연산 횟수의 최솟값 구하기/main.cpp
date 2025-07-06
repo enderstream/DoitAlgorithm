@@ -52,11 +52,11 @@ void solution(int N, vector<matrix_t> &matrices)
     for (int i = 0; i < N; i++)
         DP[i][i] = 0;
 
-    for (int delta = 1; delta < N; delta++)
-        for (int i = 0; i < N - delta; i++)
-            for (int k = i; k < i + delta; k++)
-                DP[i][i + delta] = min(DP[i][i + delta],
-                                       DP[i][k] + DP[k + 1][i + delta] + matrices[i].r * matrices[k].c * matrices[i + delta].c);
+    for (int len = 1; len < N; len++)
+        for (int i = 0; i < N - len; i++)
+            for (int k = i; k < i + len; k++)
+                DP[i][i + len] = min(DP[i][i + len],
+                                     DP[i][k] + DP[k + 1][i + len] + matrices[i].r * matrices[k].c * matrices[i + len].c);
 
     cout << DP[0][N - 1];
 }
