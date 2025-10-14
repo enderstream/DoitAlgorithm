@@ -40,6 +40,8 @@ int main(int argc, const char *argv[])
 
 void solution(point_t P1, point_t P2, point_t P3)
 {
-    int CCW = P1.x * P2.y + P2.x * P3.y + P3.x * P1.y - P2.x * P1.y - P3.x * P2.y - P1.x * P3.y;
+    int CCW = (P2.x - P1.x) * (P3.y - P2.y) - (P2.y - P1.y) * (P3.x - P2.x);
+    // or
+    // int CCW = P1.x * P2.y + P2.x * P3.y + P3.x * P1.y - P2.x * P1.y - P3.x * P2.y - P1.x * P3.y;
     cout << (CCW > 0) - (CCW < 0);
 }
